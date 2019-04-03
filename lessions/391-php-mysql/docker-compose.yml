@@ -1,0 +1,14 @@
+version: '2'
+services:
+  mysql:
+    restart: always
+    image: docker.shiwaforce.com/1902-docker-kubernetes/anton/mysql:latest
+  php:
+    restart: always
+    image: docker.shiwaforce.com/1902-docker-kubernetes/anton/php:latest
+    depends_on:
+      - "mysql"
+    links:
+      - "mysql"
+    ports:
+      - "80:80"
